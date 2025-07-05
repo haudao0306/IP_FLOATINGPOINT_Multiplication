@@ -10,7 +10,7 @@ module bo_mul_floatingpoint (
 
     // === Tín hi?u k?t n?i n?i b? ===
     wire MLB_significand_mult;
-    wire MLB_exponent_inc;
+    wire bit_check_overflow;
     wire mux_en_reg;
     wire enable_reg;
     wire inc_shift_en;
@@ -29,7 +29,7 @@ module bo_mul_floatingpoint (
         .mux_en_reg(mux_en_reg),
         .enable_reg(enable_reg),
         .no_start(no_start),
-        .MLB_exp_inc(MLB_exponent_inc),         // Báo tràn exponent
+        .bit_check_overflow(bit_check_overflow),         // Báo tràn exponent
         .MLB_significand_mult(MLB_significand_mult), // Báo c?n shift
         .result(result),
         .overflow_flag(overflow_flag)                         // K?t qu? IEEE 754
@@ -41,7 +41,7 @@ module bo_mul_floatingpoint (
         .reset(reset),
         .start(start),
         .MLB_significand_mult(MLB_significand_mult),
-        .MLB_exponent_inc(MLB_exponent_inc),
+        .bit_check_overflow(bit_check_overflow),
         .inc_shift_en(inc_shift_en),
         .mux_en_rounding(mux_en_rounding),
         .mux_en_reg(mux_en_reg), 

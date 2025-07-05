@@ -9,7 +9,7 @@ module datapath_floatingpoint_mul (
     input         enable_reg,
     input         enable_rounding,
     input         no_start,
-    output        MLB_exp_inc,
+    output        bit_check_overflow,
     output        MLB_significand_mult,
     output [31:0] result,
     output        overflow_flag
@@ -91,8 +91,8 @@ module datapath_floatingpoint_mul (
 
     // === C?nh báo tràn
     assign MLB_significand_mult = significand_mult[47]; // n?u MSB = 1 thì c?n d?ch
-    assign MLB_exp_inc = exp_inc[8];                    // n?u bit cao c?a exponent = 1 ? tràn
-
+    assign bit_check_overflow = (exp_inc < 9'd1) || (exp_inc > 9'd254);
+                       
 endmodule
 
 

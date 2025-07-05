@@ -2,7 +2,7 @@ module control_floatingpoint_mul (
     input         clk,
     input         reset,
     input         MLB_significand_mult,
-    input         MLB_exponent_inc,
+    input         bit_check_overflow,
     input         start,
     output reg    inc_shift_en,
     output reg    mux_en_rounding,
@@ -69,7 +69,7 @@ module control_floatingpoint_mul (
 
             ROUND: begin
                 mux_en_reg = 0;
-                mux_en_rounding = MLB_exponent_inc;
+                mux_en_rounding = bit_check_overflow;
                 enable_rounding = 1;
             end
         endcase
